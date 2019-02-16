@@ -14,9 +14,9 @@ Rails.application.routes.draw do
   
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
-      resources :basic_unity_healths, only: [:find_ubs]do
+      resources :basic_unity_healths, only: [:find_ubs], :path => "" do
         collection do
-          get :find_ubs
+          get :find_ubs, :path => "find_ubs"
         end
       end
     end
