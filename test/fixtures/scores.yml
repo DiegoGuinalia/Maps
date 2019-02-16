@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  adaptation_for_seniors: 1
+  medical_equipment: 1
+  medice: 1
+
+two:
+  adaptation_for_seniors: 1
+  medical_equipment: 1
+  medice: 1
