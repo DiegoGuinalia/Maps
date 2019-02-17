@@ -7,9 +7,9 @@
 function myMap() {
 
 var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-  var myCenter = new google.maps.LatLng(38.224905, 48.252143);
+  var myCenter = new google.maps.LatLng(-20.7629585266107, -40.7275199890125);
   var mapCanvas = document.getElementById("map");
-  var mapOptions = {center: myCenter, zoom: 16};
+  var mapOptions = {center: myCenter, zoom: 8};
   var map = new google.maps.Map(mapCanvas, mapOptions);
   var marker = new google.maps.Marker({position:myCenter});
   marker.setMap(map);

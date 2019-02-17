@@ -3,6 +3,8 @@ class UnityBasicHealth < ActiveRecord::Base
   has_one :geocode
   
   scope :by_geocode, -> (lat, long){ 
-    UnityBasicHealth.joins(:geocode).merge(Geocode.where(lat:lat, long: long))
+    Geocode
+    .where("lat LIKE ? AND long LIKE ?", "%#{lat}%", "%#{long}%")
+    .map(&:unity_basic_health)
   }
 end

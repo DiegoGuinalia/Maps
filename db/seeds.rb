@@ -8,8 +8,7 @@
     geocode = Geocode.new
     score = Score.new
     
-    ubs.address = "#{row['dsc_endereco']}, #{row["dsc_bairro"]}"
-    ubs.address = "#{row['dsc_endereco']}, #{row["dsc_bairro"]}"
+    ubs.name = "#{row['nom_estab']}"
     ubs.address = "#{row['dsc_endereco']}, #{row["dsc_bairro"]}"
     ubs.city = row["dsc_cidade"]
     ubs.phone = row['dsc_telefone']
@@ -28,6 +27,6 @@
     score.save
   end
   
-  puts "Até agora foram cadastrados #{ubs.count} ubs no banco de dados!"
+  puts "Até agora foram cadastrados #{UnityBasicHealth.count} ubs no banco de dados!"
   
 

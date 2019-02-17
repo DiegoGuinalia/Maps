@@ -1,9 +1,10 @@
 json.array! @ubs do |ubs|
 
   json.body do 
-    json.query    params[:query]
-    json.page     params[:page].to_i
-    json.per_page params[:per_page].to_i
+    json.query          params[:query]
+    json.current_page   params[:page].to_i
+    json.per_page       params[:per_page].to_i
+    json.total_entries  @ubs_entries
     
     json.entries do
       json.id       ubs.id
