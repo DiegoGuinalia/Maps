@@ -1,19 +1,42 @@
-<div class="container">
-  <div class="section">
+<div>
+  <div>
+    <div class="col s12 m6">
+      <div class="card #212121 grey darken-4 card-style">
+        <div class="card-action">
+          <%= simple_form_for basic_unity_healths_path, :method => 'get' do |f| %>
+            <%= f.input :by_query,
+              label: false, 
+              input_html: { name: 'by_query', class: 'text-color' } %>
+            <%= f.button :submit, "Buscar" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <div id="map" style="width:100%;height:600px;"></div>
+  <div class="row row-dimension">
+    <div id="map" class="map-size"></div>
+  </div>
+</div>    
+    <script>
+      function myMap() {
+        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+        var myCenter = new google.maps.LatLng(<%=raw @fix_marker.first %>,<%=raw @fix_marker.second%>);
+        var mapCanvas = document.getElementById("map");
+        var mapOptions = {center: myCenter, zoom: 8};
+        var map = new google.maps.Map(mapCanvas, mapOptions);
+        var marker = new google.maps.Marker({position:myCenter});
+        marker.setMap(map);
 
-<script>
-function myMap() {
-
-var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-  var myCenter = new google.maps.LatLng(-20.7629585266107, -40.7275199890125);
-  var mapCanvas = document.getElementById("map");
-  var mapOptions = {center: myCenter, zoom: 8};
-  var map = new google.maps.Map(mapCanvas, mapOptions);
-  var marker = new google.maps.Marker({position:myCenter});
-  marker.setMap(map);
-}
-</script>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHWW1CdYaSXwU68yKsEFMV1y1meRYFFLM&callback=myMap"></script>
+        var locations = <%=raw @ubs %>;
+     
+        for (i = 0; i < locations.length; i++) {  
+          marker = new google.maps.Marker({
+          position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+            title: (locations[i][0]),
+            map: map
+          });
+        }
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%=raw Rails.application.secrets.google_maps_key%>&callback=myMap"></script>

@@ -32,11 +32,12 @@ ActiveRecord::Schema.define(version: 20190216193320) do
 
   create_table "unity_basic_healths", force: :cascade do |t|
     t.string   "name"
+    t.string   "neighborhood"
     t.string   "address"
     t.string   "city"
     t.string   "phone"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
 end
