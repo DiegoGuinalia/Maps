@@ -7,6 +7,7 @@ class BasicUnityHealthsController < ApplicationController
         .all.map{
           |m| [m.name.to_s, m.geocode.lat, m.geocode.long] 
         }
+
       @fix_marker =  @ubs.last.drop(1)
     else
       @ubs = []
