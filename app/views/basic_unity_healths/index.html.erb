@@ -17,26 +17,12 @@
   <div class="row row-dimension">
     <div id="map" class="map-size"></div>
   </div>
-</div>    
-    <script>
-      function myMap() {
-        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-        var myCenter = new google.maps.LatLng(<%=raw @fix_marker.first %>,<%=raw @fix_marker.second%>);
-        var mapCanvas = document.getElementById("map");
-        var mapOptions = {center: myCenter, zoom: 8};
-        var map = new google.maps.Map(mapCanvas, mapOptions);
-        var marker = new google.maps.Marker({position:myCenter});
-        marker.setMap(map);
+</div>
 
-        var locations = <%=raw @ubs %>;
-     
-        for (i = 0; i < locations.length; i++) {  
-          marker = new google.maps.Marker({
-          position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-            title: (locations[i][0]),
-            map: map
-          });
-        }
-      }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=<%=raw Rails.application.secrets.google_maps_key%>&callback=myMap"></script>
+<div>
+  <div id="ubs" value="<%= @ubs %>"></div>
+  <div id="lat" value="<%= @fix_marker.first %>"></div>
+  <div id="long" value="<%= @fix_marker.second %>"></div>
+<div>
+<%= javascript_include_tag "draw_maps" %>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%=raw Rails.application.secrets.google_maps_key%>&callback=myMap"></script>
