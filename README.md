@@ -19,7 +19,7 @@ após todos os passos anteriores, você deverá seguir os seguintes passos:
 ## web app
 **http://localhost:3000** (Porta default para inicialização do sistema)
 ## API
-http://localhost:3000/api/v1/find_ubs?query=[LATITUDE],[LONGITUDE]&page=[número_pagina_visualização]&per_page=[registros_por_página]
+/api/v1/find_ubs?query=[LATITUDE],[LONGITUDE]&page=[número_pagina_visualização]&per_page=[registros_por_página]
 
 ## Parando execução
 
